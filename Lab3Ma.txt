@@ -1,0 +1,75 @@
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var etDishName: EditText
+    private lateinit var cbVegetarian: CheckBox
+    private lateinit var cbGlutenFree: CheckBox
+    private lateinit var cbLowCalorie: CheckBox
+    private lateinit var cbHighProtein: CheckBox
+    private lateinit var btnAdd: Button
+    private lateinit var tvResult: TextView
+
+    // Список добавленных блюд
+    private val dishes = mutableListOf<String>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // Инициализация views
+        etDishName = findViewById(R.id.etDishName)
+        cbVegetarian = findViewById(R.id.cbVegetarian)
+        cbGlutenFree = findViewById(R.id.cbGlutenFree)
+        cbLowCalorie = findViewById(R.id.cbLowCalorie)
+        cbHighProtein = findViewById(R.id.cbHighProtein)
+        btnAdd = findViewById(R.id.btnAdd)
+        tvResult = findViewById(R.id.tvResult)
+
+        btnAdd.setOnClickListener {
+            addDish()
+        }
+    }
+
+    private fun addDish() {
+        val name = etDishName.text.toString().trim()
+
+        if (name.isEmpty()) {
+            Toast.makeText(this, "Введите название блюда", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Собираем характеристики из CheckBox
+        val characteristics = mutableListOf<String>()
+        if (cbVegetarian.isChecked) characteristics.add("вегетарианское")
+        if (cbGlutenFree.isChecked) characteristics.add("без глютена")
+        if (cbLowCalorie.isChecked) characteristics.add("низкокалорийное")
+        if (cbHighProtein.isChecked) characteristics.add("богатое белком")
+
+        val desc = if (characteristics.isEmpty()) {
+            "• $name (без особых характеристик)"
+        } else {
+            "• $name (${characteristics.joinToString(", ")})"
+        }
+
+        dishes.add(desc)
+
+        // Обновляем вывод в ScrollView
+        tvResult.text = dishes.joinToString("\n\n")
+
+        // Очистка полей
+        etDishName.text.clear()
+        cbVegetarian.isChecked = false
+        cbGlutenFree.isChecked = false
+        cbLowCalorie.isChecked = false
+        cbHighProtein.isChecked = false
+
+        Toast.makeText(this, "Блюдо добавлено в каталог", Toast.LENGTH_SHORT).show()
+    }
+}

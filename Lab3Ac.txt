@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#F5F5F5">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Здоровое питание"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"
+                android:textColor="#2E7D32"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Название блюда:"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etDishName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Например: Овсянка с ягодами"
+                android:inputType="text"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Характеристики блюда:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/cbVegetarian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Вегетарианское"/>
+
+            <CheckBox
+                android:id="@+id/cbGlutenFree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Без глютена"/>
+
+            <CheckBox
+                android:id="@+id/cbLowCalorie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Низкокалорийное"/>
+
+            <CheckBox
+                android:id="@+id/cbHighProtein"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Богатое белком"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Добавить в каталог"
+                android:textAllCaps="false"
+                android:backgroundTint="#4CAF50"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Каталог здоровых блюд:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Здесь появятся добавленные блюда..."
+                android:textSize="15sp"
+                android:lineSpacingExtra="4dp"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:elevation="2dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
